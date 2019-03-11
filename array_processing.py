@@ -53,7 +53,7 @@ class IntegerArrayProcessor:
                 if seen[x] == 1:
                     dupes.append(x)
                 seen[x] += 1
-        print(dupes)
+        print("Found duplicated value " + str(dupes))
         return dupes
 
 
