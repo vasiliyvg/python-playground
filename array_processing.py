@@ -8,35 +8,44 @@ class IntegerArrayProcessor:
         self.min = min_num
         self.max = max_num
         self.arr = []
+        self.updated_arr = []
 
     def generate_array(self):
         print("Generating an array with values from " + str(self.min) + " to " + str(self.max))
-        generated = array.array("i", range(self.min, self.max + 1))
+        generated = random.sample(range(self.min, self.max + 1), self.max)
         self.arr = list(generated)
-        print("Array is generated: " + str(self.arr))
+        print(str(self.arr))
         return self
 
     def remove_random_number_from_array(self):
-        print("Removed random element from array.")
         by_index = random.randint(self.min, self.max - 1)
-        print(by_index)
-        self.arr.remove(by_index)
-        print(self.arr)
+        self.updated_arr = self.arr.copy()
+        print("Removed value " + str(self.updated_arr.pop(by_index)) + ", located by index " + str(by_index))
+        print(self.updated_arr)
         return self
 
-    # Find the missing number in a given integer array
     def find_missing_number_in_array(self):
         arr = self.arr
-        n = len(arr)
-        for i in range(n):
-            if arr[i + 1] != (arr[i] + 1):
-                print("Removed element is found: " + str(arr[i] + 1))
-                return arr[i] + 1
+        updated_arr = self.updated_arr
+        print(arr)
+        print(updated_arr)
+        for i in range(len(arr)):
+            if arr[i] != updated_arr[i]:
+                print("Removed element is found: " + str(arr[i]))
+                return arr[i]
 
 
 array_proc = IntegerArrayProcessor(1, 100)
 
+# Find the missing number in a given integer array
 array_proc\
     .generate_array()\
     .remove_random_number_from_array()\
     .find_missing_number_in_array()
+
+# Find the duplicate number on a given integer array
+array_proc\
+    .generate_array()\
+    .remove_random_number_from_array()\
+    .find_missing_number_in_array()
+
