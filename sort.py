@@ -18,5 +18,13 @@ class Sort:
                     arr[j - 1] = temp
         return arr
 
+
 sort = Sort([9, 7, 3, 6, 2])
 print(sort.bubble())
+
+
+
+
+
+
+
